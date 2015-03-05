@@ -1,0 +1,13 @@
+﻿//IRCUT控制程序编译
+arm-hisiv100nptl-linux-gcc -o ircut gpio.c ircut.c
+
+//红外灯输入信号读取程序编译
+arm-hisiv100nptl-linux-gcc -o redled  gpio.c redled.c
+
+gpio.c是ircut和读红外灯信号公用的读写gpio状态的源文件
+
+devmem命令作用：直接读写内存地址的数据
+写入：在地址0x97000000写入32bit值0x7777ABCD
+/dev # devmem 0x97000000 32 0x7777ABCD
+读地址0x97000000 ：/dev # devmem 0x97000000              
+显示地址0x97000000的数值为：0x7777ABCD
